@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Registration Form</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .reset-btn {
+        padding: 8px 12px;
+        border: none;
+        border-radius: 3px;
+        background-color: #7ab2d3;
+        color: #fff;
+        font-size: 17px;
+        cursor: pointer;
+        box-shadow: 0 0 10px rgb(165, 171, 186);
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+      }
+
+      .reset-btn:hover {
+        background-color: rgb(59, 46, 94);
+      }
+
+      .submit-btn {
+        padding: 7px 12px;
+        border: none;
+        border-radius: 3px;
+        background-color: #4a628a;
+        color: #fff;
+        font-size: 17px;
+        cursor: pointer;
+        box-shadow: 0 0 10px rgb(165, 171, 183);
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+      }
+
+      .submit-btn:hover {
+        background-color: black;
+      }
+    </style>
+  </head>
+
+  <body
+    style="
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #d3e9f8;
+      font-family: 'Varela Round', sans-serif;
+      background-image: url('https://images.pexels.com/photos/7134990/pexels-photo-7134990.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    "
+  >
+    <div
+      style="
+        padding: 8px;
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 10px 15px 15px rgba(0, 0, 0, 0.1);
+      "
+    >
+      <div
+        class="form-container"
+        style="
+          background-color: #ffffff;
+          padding: 25px;
+          border: 1px solid #ddd;
+          border-radius: 10px;
+          width: 450px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        "
+      >
+        <h2 style="text-align: center">
+          <b><u>Register Here!!</u></b>
+        </h2>
+        <form id="registrationForm" onsubmit="return validateForm()">
+          <div class="form-group" style="margin-bottom: 15px">
+            <label style="font-weight: bold">Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your name"
+              style="
+                width: 100%;
+                padding: 5px;
+                margin-top: 5px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+              "
+            />
+            <div class="error" id="nameError" style="color: red; font-size: 0.9em"></div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 15px">
+            <label style="font-weight: bold">Roll Number:</label>
+            <input
+              type="text"
+              id="rollNumber"
+              name="rollNumber"
+              placeholder="Enter Roll Number"
+              style="
+                width: 100%;
+                padding: 5px;
+                margin-top: 5px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+              "
+            />
+            <div
+              class="error"
+              id="rollNumberError"
+              style="color: red; font-size: 0.9em"
+            ></div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 15px">
+            <label style="font-weight: bold">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your official email"
+              style="
+                width: 100%;
+                padding: 5px;
+                margin-top: 5px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+              "
+            />
+            <div class="error" id="emailError" style="color: red; font-size: 0.9em"></div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 15px">
+            <label style="font-weight: bold">Date of Birth:</label>
+            <input
+              type="date"
+              id="dob"
+              name="dob"
+              style="
+                width: 100%;
+                padding: 5px;
+                margin-top: 5px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+              "
+            />
+            <div class="error" id="dobError" style="color: red; font-size: 0.9em"></div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 15px">
+            <label style="font-weight: bold">Gender:</label>
+            <input type="radio" id="male" name="gender" value="male" />
+            Male
+            <input type="radio" id="female" name="gender" value="female" />
+            Female
+            <input type="radio" id="other" name="gender" value="other" />
+            Other
+            <div class="error" id="genderError" style="color: red; font-size: 0.9em"></div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 15px">
+            <label style="font-weight: bold">Course:</label>
+            <select
+              id="course"
+              name="course"
+              style="
+                width: 100%;
+                padding: 5px;
+                margin-top: 5px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+              "
+            >
+              <option value="">Select Course</option>
+              <option value="1">BSC</option>
+              <option value="2">BMS 2</option>
+              <option value="3">BBA(FIA)</option>
+            </select>
+            <div class="error" id="courseError" style="color: red; font-size: 0.9em"></div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 15px">
+            <label style="font-weight: bold">Favourite Subject:</label><br />
+            <input
+              type="checkbox"
+              class="favourite-checkbox"
+              name="favourite"
+              value="Sports"
+            />
+            Sports<br />
+            <input
+              type="checkbox"
+              class="favourite-checkbox"
+              name="favourite"
+              value="Hindi"
+            />
+            Hindi<br />
+            <input
+              type="checkbox"
+              class="favourite-checkbox"
+              name="favourite"
+              value="Music"
+            />
+            Music<br />
+            <input
+              type="checkbox"
+              class="favourite-checkbox"
+              name="favourite"
+              value="Reading"
+            />
+            Reading<br />
+            <input
+              type="checkbox"
+              class="favourite-checkbox"
+              name="favourite"
+              value="Painting"
+            />
+            Painting
+            <div class="error" id="checkboxError" style="color: red; font-size: 0.9em"></div>
+          </div>
+
+          <div
+            class="form-actions"
+            style="
+              display: flex;
+              justify-content: center;
+              gap: 10px;
+              margin-top: 25px;
+            "
+          >
+            <button type="submit" class="submit-btn">Submit</button>
+            <button type="reset" class="reset-btn">Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      function validateForm() {
+        let isValid = true;
+
+        const name = document.getElementById("name").value;
+        const nameError = document.getElementById("nameError");
+        if (!/^[A-Za-z\s]+$/.test(name)) {
+          nameError.textContent = "Name should contain only letters";
+          isValid = false;
+        } else {
+          nameError.textContent = "";
+        }
+
+        const rollNumber = document.getElementById("rollNumber").value;
+        const rollNumberError = document.getElementById("rollNumberError");
+        if (!/^\d{7}$/.test(rollNumber)) {
+          rollNumberError.textContent = "Roll number must be 7 digits";
+          isValid = false;
+        } else {
+          rollNumberError.textContent = "";
+        }
+
+        const email = document.getElementById("email").value;
+        const emailError = document.getElementById("emailError");
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          emailError.textContent = "Please enter a valid email address";
+          isValid = false;
+        } else {
+          emailError.textContent = "";
+        }
+
+        const dob = document.getElementById("dob").value;
+        const dobError = document.getElementById("dobError");
+        if (!dob) {
+          dobError.textContent = "Date of birth is required";
+          isValid = false;
+        } else {
+          dobError.textContent = "";
+        }
+
+        const genderError = document.getElementById("genderError");
+        if (!document.querySelector('input[name="gender"]:checked')) {
+          genderError.textContent = "Please select a gender";
+          isValid = false;
+        } else {
+          genderError.textContent = "";
+        }
+
+        const course = document.getElementById("course").value;
+        const courseError = document.getElementById("courseError");
+        if (!course) {
+          courseError.textContent = "Please select a course";
+          isValid = false;
+        } else {
+          courseError.textContent = "";
+        }
+
+        const checkboxes = document.querySelectorAll('input[name="favourite"]:checked');
+        const checkboxError = document.getElementById("checkboxError");
+        if (checkboxes.length === 0) {
+          checkboxError.textContent = "Please select at least one favourite subject";
+          isValid = false;
+        } else {
+          checkboxError.textContent = "";
+        }
+
+        return isValid;
+      }
+    </script>
+  </body>
+</html>
